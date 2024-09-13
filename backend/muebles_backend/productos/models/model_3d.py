@@ -1,8 +1,8 @@
 from django.db import models
-from .forniture import Forniture
+from .furniture import Furniture
 
 class FornitureModel3D(models.Model):
-    forniture = models.OneToOneField(Forniture, related_name='model_3d', on_delete=models.CASCADE)
+    forniture = models.OneToOneField(Furniture, related_name='model_3d', on_delete=models.CASCADE)
     model_file_url = models.URLField()
 
     def __str__(self):
