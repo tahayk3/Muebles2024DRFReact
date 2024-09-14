@@ -1,3 +1,3 @@
-from .furniture import Forniture
-from .image import FornitureImage
-from .model_3d import FornitureModel3D
+from .FurnitureModel import FurnitureModel
+from .FornitureImageModel import FornitureImageModel
+from .FornitureModel3DModel import FornitureModel3DModel

@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import FurnitureModel, FornitureImageModel, FornitureModel3DModel
 
-# Register your models here.
+# Registrando modelos para que esten en djangoAdmin
+admin.site.register(FurnitureModel)
+admin.site.register(FornitureImageModel)
+admin.site.register(FornitureModel3DModel)
