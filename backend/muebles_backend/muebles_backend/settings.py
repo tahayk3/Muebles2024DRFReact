@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',  # Django Rest Framework
     'productos',       # aplicación de productos
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,9 +52,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #CORS
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'muebles_backend.urls'
+
+#CORS
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
 TEMPLATES = [
     {
