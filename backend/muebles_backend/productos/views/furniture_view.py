@@ -5,9 +5,18 @@ from ..serializers import FurnitureSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from ..permissions import IsAdminUser, IsEditor, IsViewer
 
+from rest_framework.pagination import PageNumberPagination
+
+
+class CustomPagination(PageNumberPagination):
+    page_size = 10  # Número de elementos por página
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
 class FurnitureListView(generics.ListCreateAPIView):
     queryset = FurnitureModel.objects.all()
     serializer_class = FurnitureSerializer
+    pagination_class = CustomPagination
    
     def get_permissions(self):
         if self.request.method == 'GET':
@@ -19,6 +28,7 @@ class FurnitureListView(generics.ListCreateAPIView):
 class FurnitureDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = FurnitureModel.objects.all()
     serializer_class = FurnitureSerializer
+    pagination_class = CustomPagination
 
     def get_permissions(self):
         if self.request.method == 'GET':
