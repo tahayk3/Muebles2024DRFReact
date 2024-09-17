@@ -4,4 +4,4 @@ from ..models import FornitureModel3DModel
 class FurnitureModel3DSerializer(serializers.ModelSerializer):
     class Meta:
         model = FornitureModel3DModel
-        fields = '__all__'
+        fields = ['model_file_url']

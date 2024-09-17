@@ -4,4 +4,4 @@ from ..models import FornitureImageModel
 class FurnitureImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = FornitureImageModel
-        fields = '__all__'
+        fields = ['id', 'image_url']

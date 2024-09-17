@@ -1,5 +1,5 @@
 from rest_framework import generics
-from ..models import FurnitureModel
+from ..models import FurnitureModel, FornitureImageModel, FornitureModel3DModel
 from ..serializers import FurnitureSerializer
 
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -9,7 +9,7 @@ from rest_framework.pagination import PageNumberPagination
 
 
 class CustomPagination(PageNumberPagination):
-    page_size = 2  # Número de elementos por página
+    page_size = 2
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -17,7 +17,7 @@ class FurnitureListView(generics.ListCreateAPIView):
     queryset = FurnitureModel.objects.all()
     serializer_class = FurnitureSerializer
     pagination_class = CustomPagination
-   
+
     def get_permissions(self):
         if self.request.method == 'GET':
             permission_classes = [AllowAny]
@@ -25,16 +25,16 @@ class FurnitureListView(generics.ListCreateAPIView):
             permission_classes = [IsAuthenticated, IsAdminUser]
         return [permission() for permission in permission_classes]
 
-class FurnitureDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = FurnitureModel.objects.all()
-    serializer_class = FurnitureSerializer
-    pagination_class = CustomPagination
+    def perform_create(self, serializer):
+        furniture = serializer.save()
 
-    def get_permissions(self):
-        if self.request.method == 'GET':
-            permission_classes = [AllowAny]
-        elif self.request.method in ['PUT', 'PATCH']:
-            permission_classes = [IsAuthenticated, IsEditor |  IsAdminUser]
-        elif self.request.method == 'DELETE':
-            permission_classes = [IsAuthenticated, IsAdminUser]
-        return [permission() for permission in permission_classes]
+        # Crear registros para imágenes
+        images = self.request.data.get('images', [])
+        for image_url in images:
+            print("URL de imagen recibida:", image_url)
+            FornitureImageModel.objects.create(furniture=furniture, image_url=image_url)
+
+        # Crear registro para el modelo 3D
+        model_urls = self.request.data.get('model_3d', [])
+        for model_url in model_urls:
+            FornitureModel3DModel.objects.create(furniture=furniture, model_file_url=model_url)
