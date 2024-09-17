@@ -5,9 +5,16 @@ import { storage } from '../firebase';
 const UploadForm = ({ onUploadSuccess, multiple = false }) => {
     const [files, setFiles] = useState([]);
     const [progress, setProgress] = useState(0);
+    //Estado para las viastas previas
+    const [previewUrls, setPreviewUrls] = useState([]);
 
     const handleFileChange = (e) => {
-        setFiles(Array.from(e.target.files));
+        const selectedFiles = Array.from(e.target.files);
+        setFiles(selectedFiles);
+
+        //Crear URLs para l vista previa
+        const previewUrls = selectedFiles.map((file) => URL.createObjectURL(file));
+        setPreviewUrls(previewUrls);
     };
 
     const handleUpload = (e) => {
@@ -49,12 +56,45 @@ const UploadForm = ({ onUploadSuccess, multiple = false }) => {
         });
     };
 
+    const handleRemoveImage = (index) =>{
+        const updatedFiles = files.filter((_,i)=>i !== index);
+        const updatePreviews = previewUrls.filter((_,i)=> i !==index);
+
+        setFiles(updatedFiles);
+        setPreviewUrls(updatePreviews);
+    };
+
     return (
-        <>
-            <input type="file" onChange={handleFileChange} multiple={multiple} />
-            <button onClick={handleUpload}>Subir</button>
-            <div>Subida de imagen en progreso: {progress}%</div>
-        </>
+        <div>
+        <input type="file" onChange={handleFileChange} multiple={multiple} />
+        <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+            {previewUrls.map((url, index) => (
+                <div key={index} style={{ position: "relative" }}>
+                    <img
+                        src={url}
+                        alt={`preview ${index}`}
+                        style={{ width: "100px", height: "100px", objectFit: "cover" }}
+                    />
+                    <button
+                        onClick={() => handleRemoveImage(index)}
+                        style={{
+                            position: "absolute",
+                            top: 0,
+                            right: 0,
+                            background: "red",
+                            color: "white",
+                            border: "none",
+                            cursor: "pointer",
+                        }}
+                    >
+                        X
+                    </button>
+                </div>
+            ))}
+        </div>
+        <button onClick={handleUpload}>Subir</button>
+        <div>Subida de imagen en progreso: {progress}%</div>
+    </div>
     );
 };
 

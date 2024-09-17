@@ -44,10 +44,7 @@ const CreateFurnitureForm = () => {
 
         const dataToSend = {
             ...formData,
-            model_3d: formData.model_3d, // Mantener consistencia con la API
         };
-
-        console.log("Datos a enviar:", dataToSend);
 
         const token = localStorage.getItem("access_token");
         try {
