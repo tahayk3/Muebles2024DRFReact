@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import UploadForm from "./UploadForm";
 import axios from "axios";
 
@@ -8,9 +8,15 @@ const CreateFurnitureForm = () => {
         description: "",
         price: "",
         stock: "",
-        images: [],
+        images: [], // Solo URLs de las imágenes
         model_3d: [],
     });
+
+    const [updatedImages, setUpdatedImages] = useState([]);
+
+    useEffect(() => {
+        // No actualizamos el estado de formData aquí, lo haremos en handleSubmit
+    }, [updatedImages]);
 
     const handleInputChange = (e) => {
         setFormData({
@@ -20,37 +26,49 @@ const CreateFurnitureForm = () => {
     };
 
     const handleImageUpload = (urls) => {
-        setFormData((prevData) => ({
-            ...prevData,
-            images: [...prevData.images, ...urls], // Acumular nuevas imágenes
-        }));
+        setUpdatedImages(prevImages => {
+            const newImages = urls.map(({ url, name }) => ({ image_url: url, name }));
+            const existingImageUrls = new Set(prevImages.map(img => img.image_url));
+            return [
+                ...prevImages,
+                ...newImages
+            ].filter((img, index, self) =>
+                index === self.findIndex((t) => t.image_url === img.image_url)
+            );
+        });
+    };
+
+    const handleRemoveImage = (imageName) => {
+        setUpdatedImages(prevImages =>
+            prevImages.filter(img => img.name !== imageName)
+        );
     };
 
     const handleModelUpload = (urls) => {
-        setFormData((prevData) => ({
+        setFormData(prevData => ({
             ...prevData,
-            model_3d: urls, // Ahora model_3d puede manejar múltiples URLs
+            model_3d: urls,
         }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Verificar que se hayan subido al menos una imagen
-        if (formData.images.length === 0) {
+        if (updatedImages.length === 0) {
             alert("Por favor, sube al menos una imagen.");
             return;
         }
 
-        const dataToSend = {
+        const formDataToSend = {
             ...formData,
+            images: updatedImages.map(img => img.image_url) // Solo URLs
         };
 
         const token = localStorage.getItem("access_token");
         try {
             const response = await axios.post(
                 "http://127.0.0.1:8000/api/furniture/",
-                dataToSend,
+                formDataToSend,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -107,11 +125,11 @@ const CreateFurnitureForm = () => {
             </div>
             <div>
                 <label>Subir imágenes</label>
-                <UploadForm onUploadSuccess={handleImageUpload} multiple={true} />
+                <UploadForm onUploadSuccess={handleImageUpload} onRemoveImage={handleRemoveImage} multiple={true} type="image" />
             </div>
             <div>
                 <label>Subir modelo 3D</label>
-                <UploadForm onUploadSuccess={handleModelUpload} />
+                <UploadForm onUploadSuccess={handleModelUpload} type="3D model" />
             </div>
             <button type="submit">Crear Mueble</button>
         </form>
@@ -119,4 +137,3 @@ const CreateFurnitureForm = () => {
 };
 
 export default CreateFurnitureForm;
-
