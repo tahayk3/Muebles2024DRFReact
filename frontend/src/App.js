@@ -4,6 +4,8 @@ import FurnitureList from './components/FurnitureList';
 import Login from './components/Login';
 import UploadForm from './components/UploadForm';
 import CreateFurnitureForm from './components/CreateFurnitureForm';
+import FurnitureDetail from './components/FurnitureDetail';
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/uploadform" element={<UploadForm />} />
         <Route path="/createfurnitureform" element={<CreateFurnitureForm />} />
+        <Route path="/furniture/:id" element={<FurnitureDetail/>}/>
       </Routes>
     </Router>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const FurnitureList = () => {
   const [furniture, setFurniture] = useState([]);
@@ -7,6 +8,7 @@ const FurnitureList = () => {
   const [previousPage, setPreviousPage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
 
   const fetchFurniture = async (url, pageChange = 0) => {
     setLoading(true);
@@ -33,7 +35,7 @@ const FurnitureList = () => {
         <>
           {furniture.length > 0 ? (
             furniture.map((item)=>(
-              <div key={item.id}>
+              <div key={item.id} onClick={() => navigate(`/furniture/${item.id}`)}>
                 <h2>{item.name}</h2>
                 <p>{item.description}</p>
                 <p>Price: ${item.price}</p>
