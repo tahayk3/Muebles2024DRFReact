@@ -1,0 +1,127 @@
+/* Contenedor de las imágenes */
+.image-gallery {
+  width: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  height: 700px;
+}
+
+.gallery-image {
+  position: absolute;
+  max-width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 5s ease; /* Transición suave al hacer hover */
+}
+
+/* Superposición y rotación en desorden */
+.gallery-image:nth-child(1) {
+  top: 50px;
+  left: 1px;
+  transform: rotate(-5deg); /* Rotación leve */
+}
+
+.gallery-image:nth-child(2) {
+  top: 40px;
+  left: 550px;
+  transform: rotate(-15deg); /* Rotación diferente */
+}
+
+.gallery-image:nth-child(3) {
+  top: 480px;
+  left: 60px;
+  transform: rotate(15deg); /* Otra rotación */
+}
+
+.gallery-image:nth-child(4) {
+  top: 450px;
+  left: 550px;
+  transform: rotate(5deg); /* Otra rotación */
+}
+
+.gallery-image:nth-child(5) {
+  top: 250px;
+  left: 300px;
+  transform: rotate(5deg); /* Otra rotación */
+}
+
+/* Opcional: efecto hover para resaltar la imagen */
+.gallery-image:hover {
+  transform: scale(1.10) rotate(0); /* Aumenta el tamaño y elimina la rotación al hacer hover */
+  z-index: 10; /* Lleva la imagen al frente */
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 1024px) {
+  .gallery-image {
+    max-width: 200px; /* Reducir tamaño de las imágenes en pantallas más pequeñas */
+  }
+
+  .gallery-image:nth-child(1) {
+    top: 30px;
+    left: 10px;
+  }
+
+  .gallery-image:nth-child(2) {
+    top: 20px;
+    left: 350px;
+  }
+
+  .gallery-image:nth-child(3) {
+    top: 300px;
+    left: 50px;
+  }
+
+  .gallery-image:nth-child(4) {
+    top: 300px;
+    left: 350px;
+  }
+
+  .gallery-image:nth-child(5) {
+    top: 200px;
+    left: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-gallery{
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+  }
+  .gallery-image {
+    max-width: 100px;
+  }
+
+  .gallery-image:nth-child(1) {
+    top: 20px;
+    left: 0ch;
+  }
+
+  .gallery-image:nth-child(2) {
+    top: 10px;
+    left: 250px;
+  }
+
+  .gallery-image:nth-child(3) {
+    top: 250px;
+    left: 30px;
+  }
+
+  .gallery-image:nth-child(4) {
+    top: 230px;
+    left: 250px;
+  }
+
+  .gallery-image:nth-child(5) {
+    top: 150px;
+    left: 150px;
+  }
+}
+
