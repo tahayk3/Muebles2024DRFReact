@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ModelViewer from "./ModelViewer";
-//import "./FurnitureDetail.css";
+import "./FurnitureDetail.css";
 //import Carousel from "./Carousel";
 
 function FurnitureDetail() {
@@ -46,7 +46,10 @@ function FurnitureDetail() {
 
   return (
     <div className="container-detail">
-      <h1 className="">{furniture.name}</h1>
+      <div id="header">
+        <h1>{furniture.name}</h1>
+      </div>
+
       <div className="carousel">
         {/* <Carousel images={furniture.images} /> */}
       </div>
@@ -75,7 +78,7 @@ function FurnitureDetail() {
           </div>
         </div>
         <div className="description">
-          <h2>Descripcion</h2>
+          <h2>Descripción</h2>
           <p>{furniture.description}</p>
         </div>
       </div>
