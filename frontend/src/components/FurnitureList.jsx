@@ -34,6 +34,10 @@ const FurnitureList = () => {
         <p>Loading...</p>
       ) : (
         <>
+          <div id="header">
+            <h1>Clic para más información</h1>
+            <p>Lista de muebles</p>
+          </div>
           <div className="container">
             {furniture.length > 0 ? (
               furniture.map((item) => (
@@ -42,13 +46,17 @@ const FurnitureList = () => {
                   key={item.id}
                   onClick={() => navigate(`/furniture/${item.id}`)}
                 >
-                  <div className="text-contect">
-                    <h2>{item.name}</h2>
-                    <p>Price: ${item.price}</p>
+                  <div className="card-image">
+                    <img src={item.images[0].image_url} />
                   </div>
-                  <div className="visual">
-                    <img src="https://assets-prd.ignimgs.com/2022/07/24/hwbattle5-1658622981861.jpg" />
+                  <div className="card-text">
+                    <p className="card-meal-type">Mueble nuevo y armado</p>
+                    <h2 className="card-title">{item.name}</h2>
+                    <p className="card-body">
+                      {item.description}
+                    </p>
                   </div>
+                  <div className="card-price">Q{item.price}</div>
                 </div>
               ))
             ) : (
