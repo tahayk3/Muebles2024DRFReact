@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./FurnitureList.css";
 
 const FurnitureList = () => {
   const [furniture, setFurniture] = useState([]);
@@ -24,38 +25,51 @@ const FurnitureList = () => {
   };
 
   useEffect(() => {
-    fetchFurniture('http://127.0.0.1:8000/api/furniture/');
+    fetchFurniture("http://127.0.0.1:8000/api/furniture/");
   }, []);
 
   return (
     <div>
       {loading ? (
         <p>Loading...</p>
-      ): (
+      ) : (
         <>
-          {furniture.length > 0 ? (
-            furniture.map((item)=>(
-              <div key={item.id} onClick={() => navigate(`/furniture/${item.id}`)}>
-                <h2>{item.name}</h2>
-                <p>{item.description}</p>
-                <p>Price: ${item.price}</p>
-                <p>Stock: {item.stock}</p>
-              </div>
-            ))
-          ):(
-            <p>No furniture available</p>
-          )}
+          <div className="container">
+            {furniture.length > 0 ? (
+              furniture.map((item) => (
+                <div
+                  className="card"
+                  key={item.id}
+                  onClick={() => navigate(`/furniture/${item.id}`)}
+                >
+                  <div className="text-contect">
+                    <h2>{item.name}</h2>
+                    <p>Price: ${item.price}</p>
+                  </div>
+                  <div className="visual">
+                    <img src="https://assets-prd.ignimgs.com/2022/07/24/hwbattle5-1658622981861.jpg" />
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No furniture available</p>
+            )}
+          </div>
 
           {/* Indicador de página actual */}
           <p> {currentPage}</p>
 
           <div>
-            {previousPage &&(
-              <button onClick={()=>fetchFurniture(previousPage, -1)}>Anterior</button>
+            {previousPage && (
+              <button onClick={() => fetchFurniture(previousPage, -1)}>
+                Anterior
+              </button>
             )}
 
-            {nextPage &&(
-              <button onClick={()=>fetchFurniture(nextPage, 1)}>Siguiente</button>
+            {nextPage && (
+              <button onClick={() => fetchFurniture(nextPage, 1)}>
+                Siguiente
+              </button>
             )}
           </div>
         </>

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ModelViewer from "./ModelViewer";
-import "./FurnitureDetail.css";
-import Carousel from "./Carousel";
+//import "./FurnitureDetail.css";
+//import Carousel from "./Carousel";
 
 function FurnitureDetail() {
   //obtener id por medio de la url
@@ -48,7 +48,7 @@ function FurnitureDetail() {
     <div className="container-detail">
       <h1 className="">{furniture.name}</h1>
       <div className="carousel">
-        <Carousel images={furniture.images} />
+        {/* <Carousel images={furniture.images} /> */}
       </div>
 
       <div className="container-information">
