@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./FurnitureList.css";
+import "./paginacion.css";
 
 const FurnitureList = () => {
   const [furniture, setFurniture] = useState([]);
@@ -52,9 +53,7 @@ const FurnitureList = () => {
                   <div className="card-text">
                     <p className="card-meal-type">Mueble nuevo y armado</p>
                     <h2 className="card-title">{item.name}</h2>
-                    <p className="card-body">
-                      {item.description}
-                    </p>
+                    <p className="card-body">{item.description}</p>
                   </div>
                   <div className="card-price">Q{item.price}</div>
                 </div>
@@ -64,18 +63,25 @@ const FurnitureList = () => {
             )}
           </div>
 
-          {/* Indicador de página actual */}
-          <p> {currentPage}</p>
+          {/* Paginacion */}
 
-          <div>
+          <div className="pagination-container">
             {previousPage && (
-              <button onClick={() => fetchFurniture(previousPage, -1)}>
+              <button
+                className="button"
+                onClick={() => fetchFurniture(previousPage, -1)}
+              >
                 Anterior
               </button>
             )}
 
+            
+
             {nextPage && (
-              <button onClick={() => fetchFurniture(nextPage, 1)}>
+              <button
+                className="button"
+                onClick={() => fetchFurniture(nextPage, 1)}
+              >
                 Siguiente
               </button>
             )}

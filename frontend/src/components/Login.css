@@ -1,7 +1,3 @@
-/* Contenedor principal */
-body{
-  background-color: #181926;
-}
 .login-wrapper {
   display: flex;
   justify-content: space-between;
@@ -29,7 +25,7 @@ body{
 .login-container h2 {
   margin-bottom: 20px;
   font-size: 24px;
-  color: white;
+  color: rgb(0, 0, 0);
   text-align: center;
 }
 
@@ -41,7 +37,7 @@ body{
   border: none; /* Elimina el borde */
   border-bottom: 2px solid #ccc; /* Solo muestra un borde inferior */
   background: transparent; /* Elimina el fondo */
-  color: white; /* Color del texto */
+  color: rgb(4, 3, 3); /* Color del texto */
   outline: none; /* Elimina el resalte al hacer focus */
   font-size: 16px;
   transition: border-color 0.3s ease; /* Transición suave */
