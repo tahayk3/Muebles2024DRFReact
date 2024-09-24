@@ -15,7 +15,7 @@ function FurnitureDetail() {
     const fetchFurnitureDetail = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/furniture/${id}/`
+          `http://192.168.0.9:8000/api/furniture/${id}/`
         );
         setFurniture(response.data);
         setLoading(false);

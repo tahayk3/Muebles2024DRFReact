@@ -2,6 +2,7 @@ body {
     font-family: 'Fira Code', monospace;
 }
 
+
 .container-information {
     display: flex;
     justify-content: space-between;
@@ -105,11 +106,8 @@ p {
 }
 
 @media (max-width: 480px) {
-    .perspective-text {
-        font-size: 1rem; /* Ajusta el tamaño de la fuente para móviles */
-        padding: 50px; /* Ajusta el padding */
-        margin-left: -40%;
-        width: 70%;
+    .container-information {
+        display: block;
     }
 
     .description {

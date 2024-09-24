@@ -26,7 +26,7 @@ const FurnitureList = () => {
   };
 
   useEffect(() => {
-    fetchFurniture("http://127.0.0.1:8000/api/furniture/");
+    fetchFurniture("http://192.168.0.9:8000/api/furniture/");
   }, []);
 
   return (
@@ -35,10 +35,10 @@ const FurnitureList = () => {
         <p>Loading...</p>
       ) : (
         <>
-          <div id="header">
-            <h1>Clic para más información</h1>
-            <p>Lista de muebles</p>
-          </div>
+          <marquee  direction="left">
+            <h2>Clic en la imagen para más información</h2>
+          </marquee>
+
           <div className="container">
             {furniture.length > 0 ? (
               furniture.map((item) => (
@@ -74,8 +74,6 @@ const FurnitureList = () => {
                 Anterior
               </button>
             )}
-
-            
 
             {nextPage && (
               <button
