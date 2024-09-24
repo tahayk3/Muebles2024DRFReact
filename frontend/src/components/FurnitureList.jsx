@@ -3,6 +3,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./FurnitureList.css";
 import "./paginacion.css";
+import { GiClick } from "react-icons/gi";
+import { HiCursorClick } from "react-icons/hi";
+import { FaRulerHorizontal } from "react-icons/fa";
+import { FaRulerVertical } from "react-icons/fa";
+import { FaRuler } from "react-icons/fa6";
 
 const FurnitureList = () => {
   const [furniture, setFurniture] = useState([]);
@@ -36,7 +41,7 @@ const FurnitureList = () => {
       ) : (
         <>
           <marquee  direction="left">
-            <h2>Clic en la imagen para más información</h2>
+            <h2><GiClick />              Clic en la imagen para más información              <HiCursorClick /></h2>
           </marquee>
 
           <div className="container">
@@ -52,8 +57,10 @@ const FurnitureList = () => {
                   </div>
                   <div className="card-text">
                     <p className="card-meal-type">Mueble nuevo y armado</p>
-                    <h2 className="card-title">{item.name}</h2>
-                    <p className="card-body">{item.description}</p>
+                    <h3 className="card-title">{item.name}</h3>
+                    <p className="card-body"><FaRulerHorizontal/> Ancho: {item.width} CM</p>
+                    <p className="card-body"><FaRulerVertical/> Altura: {item.height} CM</p>
+                    <p className="card-body"><FaRuler/> Profundidad: {item.depth} CM</p>
                   </div>
                   <div className="card-price">Q{item.price}</div>
                 </div>

@@ -41,6 +41,7 @@ marquee{
 .card-image{
   width:400px;
   height:450px;
+  object-fit: contain;
 }
 
 .card-image > img {
@@ -66,15 +67,14 @@ marquee{
 }
 
 .card-title {
-  font-size: 2.2rem;
-  margin-bottom: 20px;
-  margin-top: 5px;
-
+  font-size: 2rem;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  transform: rotate(-3deg);
 }
 
 .card-body {
   font-size: 1.25rem;
-  transform: rotate(-3deg);
 }
 
 .card-price{
