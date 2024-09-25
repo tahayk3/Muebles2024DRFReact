@@ -1,3 +1,60 @@
+/*cargando*/
+/* HTML: <div class="loader"></div> */
+.container-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .loader {
+    width: 40px; /* Aumentar el ancho a la mitad del tamaño grande */
+    height: 160px; /* Aumentar el alto a la mitad del tamaño grande */
+    background: #935936;
+    position: relative;
+  }
+  
+  .loader:before {
+    content: "";
+    position: absolute;
+    top: 20px; /* Ajustar la posición superior */
+    left: -44px; /* Ajustar la posición izquierda */
+    width: 50px; /* Aumentar el ancho a la mitad del tamaño grande */
+    height: 120px; /* Aumentar el alto a la mitad del tamaño grande */
+    background: 
+      radial-gradient(farthest-side, #fff 92%, #0000) 60% 12px/8px 8px,
+      radial-gradient(50% 60%, #53707b 92%, #0000) center/70% 55%,
+      radial-gradient(farthest-side, #53707b 92%, #0000) 50% 6px/28px 28px,
+      radial-gradient(142% 100% at bottom right, #0000 64%, #53707b 65%) bottom/57% 40%,
+      conic-gradient(from -120deg at right, #53707b 36deg, #0000 0) 100% 6px/102% 24px,
+      conic-gradient(from 120deg at top left, #0000, #ef524a 2deg 40deg, #0000 43deg) top/100% 20px;
+    background-repeat: no-repeat;    
+    transform: rotate(-26deg);
+    transform-origin: 100% 80%;
+    animation: l16 .25s infinite linear alternate;
+  }
+  
+  .loader:after {    
+    content: "";
+    position: absolute;
+    width: 12px; /* Aumentar el ancho */
+    height: 24px; /* Aumentar el alto */
+    left: -12px; /* Ajustar la posición izquierda */
+    bottom: 30px; /* Ajustar la posición inferior */
+    border-radius: 100px 0 0 100px;
+    background: #53707b;
+  }
+  
+  @keyframes l16 {
+    100% {
+      transform: rotate(0);
+    }
+  }
+  
+  
+  
+/* css componente */
 body {
     font-family: 'Fira Code', monospace;
 }

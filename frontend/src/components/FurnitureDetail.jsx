@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import ModelViewer from "./ModelViewer";
 import "./FurnitureDetail.css";
+import ColorPicker from "./ColorPicker";
 //import Carousel from "./Carousel";
 
 function FurnitureDetail() {
@@ -10,6 +11,12 @@ function FurnitureDetail() {
   const { id } = useParams();
   const [furniture, setFurniture] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const [color, setColor] = useState('#FFFFFF'); // Color inicial
+
+  const handleColorChange = (newColor) => {
+    setColor(newColor.hex); // Cambiar color al seleccionar
+  };
 
   useEffect(() => {
     const fetchFurnitureDetail = async () => {
@@ -28,7 +35,12 @@ function FurnitureDetail() {
   }, [id]);
 
   if (loading) {
-    return <p>Cargando...</p>;
+    return (
+      <div className="container-loader">
+        <div className="loader"></div>
+        <h3>cargando...</h3>
+      </div>
+    );
   }
 
   if (!furniture) {
@@ -37,12 +49,6 @@ function FurnitureDetail() {
 
   const modelUrlString = furniture.model_3d.model_file_url.replace(/'/g, '"');
   const modelUrl = JSON.parse(modelUrlString);
-  try {
-    const modelUrl = JSON.parse(furniture.model_3d.model_file_url);
-    <p>{modelUrl.url}</p>;
-  } catch (error) {
-    console.error("Error al parsear la URL del modelo 3D:", error);
-  }
 
   return (
     <div className="container-detail">
@@ -56,23 +62,23 @@ function FurnitureDetail() {
 
       <div className="container-information">
         <div className="perspective-text">
-          <div class="perspective-line">
+          <div className="perspective-line">
             <p></p>
             <p>{furniture.name}</p>
           </div>
-          <div class="perspective-line">
+          <div className="perspective-line">
             <p>{furniture.name}</p>
             <p>Varidad de colores</p>
           </div>
-          <div class="perspective-line">
+          <div className="perspective-line">
             <p>Varidad de colores</p>
             <p>Precio: Q {furniture.price}</p>
           </div>
-          <div class="perspective-line">
+          <div className="perspective-line">
             <p>Precio: Q {furniture.price}</p>
             <p>Stock: {furniture.stock}</p>
           </div>
-          <div class="perspective-line">
+          <div className="perspective-line">
             <p>Stock: {furniture.stock}</p>
             <p></p>
           </div>
@@ -84,7 +90,10 @@ function FurnitureDetail() {
       </div>
 
       <h2>Modelo 3D personalizable</h2>
-      <ModelViewer modelUrl={modelUrl.url || ""} />
+      <div>
+        
+        <ModelViewer modelUrl={modelUrl.url || ""} />
+      </div>
     </div>
   );
 }

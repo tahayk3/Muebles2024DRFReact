@@ -37,7 +37,10 @@ const FurnitureList = () => {
   return (
     <div>
       {loading ? (
-        <p>Loading...</p>
+        <div className="container-loader">
+          <div className="loader"></div>
+          <h3> cargando...</h3>
+        </div>
       ) : (
         <>
           <marquee  direction="left">
@@ -66,7 +69,7 @@ const FurnitureList = () => {
                 </div>
               ))
             ) : (
-              <p>No furniture available</p>
+              <p>No se encontraro muebles</p>
             )}
           </div>
 

@@ -1,0 +1,4 @@
+model-viewer {
+    --model-color: #FFFFFF; /* Color predeterminado */
+    color: var(--model-color);
+  }

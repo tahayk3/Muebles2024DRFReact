@@ -1,38 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Canvas, useThree, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import ColorPicker from "./ColorPicker";
 
 const Model = ({ url, color }) => {
   const { scene } = useGLTF(url);
-  const { camera } = useThree();
   const modelRef = useRef();
+  const [isModelReady, setIsModelReady] = useState(false);
+  const scaleRef = useRef(1); // Almacena la escala en una referencia
   const originalTextures = useRef({});
 
   // Rota el modelo
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.003; // Rotar alrededor del eje Y
+      modelRef.current.rotation.y += 0.001; // Rotación continua
     }
   });
 
-  useEffect(() => {
-    if (modelRef.current) {
-      const bbox = new THREE.Box3().setFromObject(modelRef.current);
-      const size = bbox.getSize(new THREE.Vector3());
-      const center = bbox.getCenter(new THREE.Vector3());
-
-      // Ajustar la cámara para centrar el modelo
-      camera.position.set(center.x, center.y, size.z * 2);
-      camera.lookAt(center);
-      camera.updateProjectionMatrix();
-
-      // Ajustar la posición del modelo para que esté centrado
-      modelRef.current.position.set(-center.x, -center.y, -center.z); // Centrar en los ejes X, Y, Z
-    }
-  }, [url, camera]);
-
+  // Actualiza el color del modelo
   useEffect(() => {
     scene.traverse((child) => {
       if (child.isMesh) {
@@ -57,24 +43,65 @@ const Model = ({ url, color }) => {
     });
   }, [color, scene]);
 
+  // Detectar cuando el modelo esté completamente cargado
+  useEffect(() => {
+    if (modelRef.current && !isModelReady) {
+      setIsModelReady(true);
+    }
+  }, [scene, isModelReady]);
+
+  // Calcular la escala y la posición una vez que el modelo esté listo
+  useEffect(() => {
+    if (isModelReady && modelRef.current) {
+      // Reiniciar la transformación
+      modelRef.current.position.set(0, 0, 0);
+      modelRef.current.scale.set(1, 1, 1); // Reinicia a escala 1 antes de recalcular
+  
+      const bbox = new THREE.Box3().setFromObject(modelRef.current);
+      console.log("Bounding Box:", bbox); // Verifica la caja delimitadora
+  
+      const size = bbox.getSize(new THREE.Vector3());
+      const height = size.y + size.y *0.05 ; // Altura del modelo
+      const windowHeight = window.innerHeight;
+  
+      if (height > 0) {
+        const scale = windowHeight / height; // Escalar basado en la altura de la ventana
+        scaleRef.current = scale; // Guardar la escala en referencia
+  
+        const center = bbox.getCenter(new THREE.Vector3());
+        console.log("center", center);
+        
+        // Escalar el modelo
+        modelRef.current.scale.set(scale, scale, scale);
+  
+        // Ajustar la posición Y para centrar el modelo
+        const canvasCenterY = height * scale / 2; // Altura del modelo escalado dividido entre 2
+        modelRef.current.position.set(-center.x * scale, -canvasCenterY, -center.z * scale); // Centrar el modelo en el canvas
+      }
+    }
+  }, [isModelReady]);
+  
+
+  // Aplicar la escala a la referencia
+  useEffect(() => {
+    if (modelRef.current) {
+      modelRef.current.scale.set(
+        scaleRef.current,
+        scaleRef.current,
+        scaleRef.current
+      );
+    }
+  }, [scaleRef.current]);
+
   return <primitive ref={modelRef} object={scene} />;
 };
 
-const CameraSetup = () => {
-  const { camera } = useThree();
-  return null; // La cámara se ajusta en el componente Model
-};
-
 const ModelViewer = ({ modelUrl }) => {
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState("#FFFFFF");
 
-  const handleColorChange = (color) => {
-    setColor(color.hex);
+  const handleColorChange = (newColor) => {
+    setColor(newColor.hex);
   };
-
-  if (!modelUrl) {
-    return <p>No se ha proporcionado un modelo 3D válido.</p>;
-  }
 
   return (
     <div
@@ -97,9 +124,9 @@ const ModelViewer = ({ modelUrl }) => {
       >
         <ambientLight intensity={3} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-        <CameraSetup />
-        <OrbitControls enableZoom={false} /> {/* Desactivar el zoom */}
+        <OrbitControls enableZoom={false} />
         <Model url={modelUrl} color={color} />
+        <CameraSetup />
       </Canvas>
       <div
         style={{
@@ -114,6 +141,18 @@ const ModelViewer = ({ modelUrl }) => {
       </div>
     </div>
   );
+};
+
+const CameraSetup = () => {
+  const { camera } = useThree();
+
+  useEffect(() => {
+    camera.position.set(1,10,700); // Ajusta la distancia aquí
+    camera.lookAt(0, 0, 0); // Apunta al centro
+    camera.updateProjectionMatrix();
+  }, [camera]);
+
+  return null; // No renderiza nada
 };
 
 export default ModelViewer;
