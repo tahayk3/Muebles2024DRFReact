@@ -6,13 +6,17 @@ import "./FurnitureDetail.css";
 import ColorPicker from "./ColorPicker";
 //import Carousel from "./Carousel";
 
+import { FaRulerHorizontal } from "react-icons/fa";
+import { FaRulerVertical } from "react-icons/fa";
+import { FaRuler } from "react-icons/fa6";
+
 function FurnitureDetail() {
   //obtener id por medio de la url
   const { id } = useParams();
   const [furniture, setFurniture] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const [color, setColor] = useState('#FFFFFF'); // Color inicial
+  const [color, setColor] = useState("#FFFFFF"); // Color inicial
 
   const handleColorChange = (newColor) => {
     setColor(newColor.hex); // Cambiar color al seleccionar
@@ -52,8 +56,8 @@ function FurnitureDetail() {
 
   return (
     <div className="container-detail">
-      <div id="header">
-        <h1>{furniture.name}</h1>
+      <div className="header">
+        <h1 class='txtelegantshadow'>{furniture.name}</h1>
       </div>
 
       <div className="carousel">
@@ -84,14 +88,25 @@ function FurnitureDetail() {
           </div>
         </div>
         <div className="description">
-          <h2>Descripción</h2>
-          <p>{furniture.description}</p>
+          <h2 className="title-description">Descripción</h2>
+          <p className="description-description">{furniture.description}</p>
+          <h2 className="title-description">Medidas</h2>
+          <p className="description-body">
+            <FaRulerHorizontal /> Ancho: {furniture.width} CM
+          </p>
+          <p className="description-body">
+            <FaRulerVertical /> Altura: {furniture.height} CM
+          </p>
+          <p className="description-body">
+            <FaRuler /> Profundidad: {furniture.depth} CM
+          </p>
         </div>
       </div>
 
-      <h2>Modelo 3D personalizable</h2>
+      <h1 class='txtelegantshadow'>Modelo 3D</h1>
+
+
       <div>
-        
         <ModelViewer modelUrl={modelUrl.url || ""} />
       </div>
     </div>
