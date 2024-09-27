@@ -4,7 +4,7 @@ import axios from "axios";
 import ModelViewer from "./ModelViewer";
 import "./FurnitureDetail.css";
 import ColorPicker from "./ColorPicker";
-//import Carousel from "./Carousel";
+import Carousel from "./Carousel";
 
 import { FaRulerHorizontal } from "react-icons/fa";
 import { FaRulerVertical } from "react-icons/fa";
@@ -15,12 +15,6 @@ function FurnitureDetail() {
   const { id } = useParams();
   const [furniture, setFurniture] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const [color, setColor] = useState("#FFFFFF"); // Color inicial
-
-  const handleColorChange = (newColor) => {
-    setColor(newColor.hex); // Cambiar color al seleccionar
-  };
 
   useEffect(() => {
     const fetchFurnitureDetail = async () => {
@@ -60,10 +54,6 @@ function FurnitureDetail() {
         <h1 class='txtelegantshadow'>{furniture.name}</h1>
       </div>
 
-      <div className="carousel">
-        {/* <Carousel images={furniture.images} /> */}
-      </div>
-
       <div className="container-information">
         <div className="perspective-text">
           <div className="perspective-line">
@@ -101,6 +91,10 @@ function FurnitureDetail() {
             <FaRuler /> Profundidad: {furniture.depth} CM
           </p>
         </div>
+      </div>
+
+      <div className="carousel">
+         <Carousel images={furniture.images} /> 
       </div>
 
       <h1 class='txtelegantshadow'>Modelo 3D</h1>

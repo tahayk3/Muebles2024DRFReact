@@ -10,6 +10,7 @@ const Model = ({ url, color }) => {
   const [isModelReady, setIsModelReady] = useState(false);
   const scaleRef = useRef(1); // Almacena la escala en una referencia
   const originalTextures = useRef({});
+  const textureLoader = new THREE.TextureLoader();
 
   // Rota el modelo
   useFrame(() => {
@@ -21,14 +22,14 @@ const Model = ({ url, color }) => {
   // Actualiza el color del modelo
   useEffect(() => {
     scene.traverse((child) => {
-      if (child.isMesh) {
+      if (child.isMesh && isModelReady) {
         // Almacenar la textura original si aún no se ha hecho
         if (!originalTextures.current[child.uuid]) {
           originalTextures.current[child.uuid] = child.material.map;
         }
 
-        // Si el color es blanco, eliminar la textura
-        if (color === '#FFFFFF' || color === '#878787') {
+        // Si el color es blanco, gris o negro
+        if (color === '#FFFFFF' || color === '#878787' || color ==='#242423') {
           child.material.map = null; // Elimina la textura
         } else {
           // Restaurar la textura original
@@ -123,7 +124,7 @@ const ModelViewer = ({ modelUrl }) => {
         }}
       >
         <ambientLight intensity={3} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
         <OrbitControls enableZoom={false} />
         <Model url={modelUrl} color={color} />
         <CameraSetup />

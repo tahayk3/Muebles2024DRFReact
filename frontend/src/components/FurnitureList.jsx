@@ -43,7 +43,7 @@ const FurnitureList = () => {
         </div>
       ) : (
         <>
-          <marquee  direction="left">
+          <marquee  direction="left" scrollamount="13">
             <h2><GiClick />              Clic en la imagen para más información              <HiCursorClick /></h2>
           </marquee>
 
@@ -69,7 +69,7 @@ const FurnitureList = () => {
                 </div>
               ))
             ) : (
-              <p>No se encontraro muebles</p>
+              <p>No se encontraron muebles</p>
             )}
           </div>
 
