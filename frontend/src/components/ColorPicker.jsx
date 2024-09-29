@@ -3,7 +3,7 @@ import React from 'react';
 
 const COLOR_PALETTE = [
   '#4f3626', // Cafe
-  '#FFFFFF', // Blanco
+  '#f7f7f7', // Blanco
   '#242423', // Negro
   '#fffcf6', // Nogal cenizo
   '#402f24', // Cafe chocolate

@@ -29,7 +29,7 @@ const Model = ({ url, color }) => {
         }
 
         // Si el color es blanco, gris o negro
-        if (color === '#FFFFFF' || color === '#878787' || color ==='#242423') {
+        if (color === '#f7f7f7' || color === '#878787' || color ==='#242423') {
           child.material.map = null; // Elimina la textura
         } else {
           // Restaurar la textura original
@@ -62,7 +62,7 @@ const Model = ({ url, color }) => {
       console.log("Bounding Box:", bbox); // Verifica la caja delimitadora
   
       const size = bbox.getSize(new THREE.Vector3());
-      const height = size.y + size.y *0.05 ; // Altura del modelo
+      const height = size.y + size.y * 0.75;  // Altura del modelo
       const windowHeight = window.innerHeight;
   
       if (height > 0) {
@@ -76,7 +76,7 @@ const Model = ({ url, color }) => {
         modelRef.current.scale.set(scale, scale, scale);
   
         // Ajustar la posición Y para centrar el modelo
-        const canvasCenterY = height * scale / 2; // Altura del modelo escalado dividido entre 2
+        const canvasCenterY = height * scale / 4; // Altura del modelo escalado dividido entre 2
         modelRef.current.position.set(-center.x * scale, -canvasCenterY, -center.z * scale); // Centrar el modelo en el canvas
       }
     }

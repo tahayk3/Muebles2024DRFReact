@@ -114,6 +114,7 @@ body {
     -webkit-backdrop-filter: blur(0.1px);
     border-style: double;
     color: white;
+
 }
 
 .title-description {
@@ -122,6 +123,7 @@ body {
 
 .description-description {
     font-size: 1.5rem;
+    padding-bottom: 50px;
 }
 
 .description-body {
@@ -215,5 +217,9 @@ p {
     .description {
         padding: 15px;
         /* Ajusta el padding */
+    }
+    .description-description {
+        font-size: 1.2rem;
+        padding-bottom: 150px;
     }
 }
