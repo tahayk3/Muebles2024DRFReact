@@ -20,7 +20,7 @@ function FurnitureDetail() {
     const fetchFurnitureDetail = async () => {
       try {
         const response = await axios.get(
-          `http://192.168.0.9:8000/api/furniture/${id}/`
+          `https://muebles2024drfreactbackend.onrender.com/api/furniture/${id}/`
         );
         setFurniture(response.data);
         setLoading(false);

@@ -31,7 +31,7 @@ const FurnitureList = () => {
   };
 
   useEffect(() => {
-    fetchFurniture("http://192.168.0.9:8000/api/furniture/");
+    fetchFurniture("https://muebles2024drfreactbackend.onrender.com/api/furniture/");
   }, []);
 
   return (

@@ -1,0 +1,41 @@
+/*CONFIGURACION DE DOTS*/
+.slick-dots {
+    bottom: 10px;
+    /* Ajusta la posición vertical de los puntos */
+}
+
+.slick-dots li button:before {
+    color: #000000;
+    /* Color de los puntos inactivos */
+}
+
+.slick-dots li.slick-active button:before {
+    color: #f00707;
+    /* Color de los puntos activos */
+}
+
+.slick-prev,
+.slick-next {
+    width: 30px;
+    /* Ajusta el tamaño de las flechas */
+    height: 30px;
+    z-index: 1;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 30px;
+    /* Ajusta el tamaño del ícono */
+    color: #000000;
+    /* Color de las flechas */
+}
+
+.slick-prev {
+    left: 10px;
+    /* Ajusta la posición horizontal de la flecha anterior */
+}
+
+.slick-next {
+    right: 10px;
+    /* Ajusta la posición horizontal de la flecha siguiente */
+}

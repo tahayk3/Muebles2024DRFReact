@@ -12,7 +12,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://192.168.0.9:8000/api/token/", {
+      const response = await axios.post("https://muebles2024drfreactbackend.onrender.com/api/token/", {
         username,
         password,
       });
