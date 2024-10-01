@@ -20,7 +20,7 @@ function FurnitureDetail() {
     const fetchFurnitureDetail = async () => {
       try {
         const response = await axios.get(
-          `https://muebles2024drfreactbackend.onrender.com/api/furniture/${id}/`
+          `https://muebles2024drfreactbackend-production.up.railway.app/api/furniture/${id}/`
         );
         setFurniture(response.data);
         setLoading(false);

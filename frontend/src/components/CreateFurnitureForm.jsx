@@ -67,7 +67,7 @@ const CreateFurnitureForm = () => {
         const token = localStorage.getItem("access_token");
         try {
             const response = await axios.post(
-                "https://muebles2024drfreactbackend.onrender.com/api/furniture/",
+                "https://muebles2024drfreactbackend-production.up.railway.app/api/furniture/",
                 formDataToSend,
                 {
                     headers: {
