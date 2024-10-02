@@ -18,8 +18,8 @@ const FurnitureList = () => {
     setLoading(true);
 
     // Verificar y reemplazar http con https si es necesario
-    const secureUrl = url.startsWith('http://')
-      ? url.replace('http://', 'https://')
+    const secureUrl = url.startsWith("http://")
+      ? url.replace("http://", "https://")
       : url;
 
     try {
@@ -30,10 +30,12 @@ const FurnitureList = () => {
       const data = await response.json();
       setFurniture(data.results);
       // Convertir next y previous a https si vienen en http
-      setNextPage(data.next ? data.next.replace('http://', 'https://') : null);
-      setPreviousPage(data.previous ? data.previous.replace('http://', 'https://') : null);
+      setNextPage(data.next ? data.next.replace("http://", "https://") : null);
+      setPreviousPage(
+        data.previous ? data.previous.replace("http://", "https://") : null
+      );
     } catch (error) {
-      console.error('Error fetching furniture:', error);
+      console.error("Error fetching furniture:", error);
     } finally {
       setLoading(false);
       setCurrentPage(currentPage + pageChange);
@@ -41,7 +43,9 @@ const FurnitureList = () => {
   };
 
   useEffect(() => {
-    fetchFurniture("https://muebles2024drfreactbackend-production.up.railway.app/api/furniture/");
+    fetchFurniture(
+      "https://muebles2024drfreactbackend-production.up.railway.app/api/furniture/"
+    );
   }, []);
 
   return (
@@ -55,7 +59,8 @@ const FurnitureList = () => {
         <>
           <marquee direction="left" scrollamount="13">
             <h2>
-              <GiClick /> Clic en la imagen para más información <HiCursorClick />
+              <GiClick /> Clic en la imagen para más información{" "}
+              <HiCursorClick />
             </h2>
           </marquee>
 
@@ -73,11 +78,19 @@ const FurnitureList = () => {
                   <div className="card-text">
                     <p className="card-meal-type">Mueble nuevo y armado</p>
                     <h3 className="card-title">{item.name}</h3>
-                    <p className="card-body"><FaRulerHorizontal /> Ancho: {item.width} CM</p>
-                    <p className="card-body"><FaRulerVertical /> Altura: {item.height} CM</p>
-                    <p className="card-body"><FaRuler /> Profundidad: {item.depth} CM</p>
+                    <p className="card-body">
+                      <FaRulerHorizontal /> Ancho: {item.width} CM
+                    </p>
+                    <p className="card-body">
+                      <FaRulerVertical /> Altura: {item.height} CM
+                    </p>
+                    <p className="card-body">
+                      <FaRuler /> Profundidad: {item.depth} CM
+                    </p>
                   </div>
-                  <div className="card-price">Q{item.price}</div>
+                  <div className="card-view-more">
+                    <p>Ver más<GiClick /></p>
+                  </div>
                 </div>
               ))
             ) : (
@@ -88,13 +101,19 @@ const FurnitureList = () => {
           {/* Paginación */}
           <div className="pagination-container">
             {previousPage && (
-              <button className="button" onClick={() => fetchFurniture(previousPage, -1)}>
+              <button
+                className="button"
+                onClick={() => fetchFurniture(previousPage, -1)}
+              >
                 Anterior
               </button>
             )}
 
             {nextPage && (
-              <button className="button" onClick={() => fetchFurniture(nextPage, 1)}>
+              <button
+                className="button"
+                onClick={() => fetchFurniture(nextPage, 1)}
+              >
                 Siguiente
               </button>
             )}

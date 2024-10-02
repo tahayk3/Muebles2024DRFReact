@@ -1,5 +1,3 @@
-
-
 /* css componente */
 marquee{
   color: #010101;
@@ -15,21 +13,24 @@ marquee{
 }
 
 .container {
-  width: 100%; /* Asegúrate de que no exceda el viewport */
+  width: 100%;
+  /* Asegúrate de que no exceda el viewport */
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  overflow-x: hidden; /* Evita que el contenido desborde horizontalmente */
-  box-sizing: border-box; /* Incluye padding y border dentro del ancho */
+  overflow-x: hidden;
+  /* Evita que el contenido desborde horizontalmente */
+  box-sizing: border-box;
+  /* Incluye padding y border dentro del ancho */
 }
 
-.card{
-  display:flex;
-  flex-direction:column;
-  width:400px;
-  margin-bottom:60px;
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-bottom: 60px;
 
-  background-color: rgba(0,0,0, 0);
+  background-color: rgba(0, 0, 0, 0);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
@@ -37,32 +38,31 @@ marquee{
   border-radius: 15px;
 }
 
-.card > div {
-  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.5);
-}
 
-.card-image{
-  width:400px;
-  height:450px;
+
+.card-image {
+  width: 400px;
+  height: 450px;
   object-fit: contain;
 }
 
-.card-image > img {
-  width: 100%;
+.card-image>img {
+  width: 90%;
   height: 100%;
   object-fit: cover;
   object-position: bottom;
   border-radius: 15px 15px 0px 0px;
 }
 
-.card-text{
-  margin:-30px auto;
-  margin-bottom:-50px;
-  height:300px;
-  width:300px;
-  background-color:#1D1C20;
-  color:#fff;
-  padding:20px;
+.card-text {
+  margin: -30px auto;
+  margin-bottom: -50px;
+  height: 300px;
+  width: 300px;
+  background-color: #4614dd;
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 .card-meal-type {
@@ -80,17 +80,87 @@ marquee{
   font-size: 1.25rem;
 }
 
-.card-price{
-  width:100px;
-  height:100px;
-  background-color:#970C0A;
-  color:#fff;
-  font-size:1.2rem;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin-left:65%;
+.card-view-more {
+  width: 150px;
+  height: 100px;
+  background-color: #c50f0cea;
+  margin-left: 60%;
   border-radius: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  animation: vibrate-2 1s linear infinite both;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Asegura que el texto se mantenga alineado en el centro */
+  overflow: hidden; /* Evita que el contenido se desborde */
 }
 
+@keyframes vibrate-2 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  40% {
+    transform: translate(2px, 2px);
+  }
+  60% {
+    transform: translate(-2px, 2px);
+  }
+  80% {
+    transform: translate(-2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.card-view-more p {
+  color: #fff;
+  font-size: 1.5rem; /* Ajusté el tamaño del texto para que se ajuste mejor */
+  animation: tracking-in-contract 3s cubic-bezier(.215, .61, .355, 1.000) infinite;
+  
+  white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+  overflow: hidden; /* Asegura que el texto no se salga del div */
+
+}
+
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: .6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+  }
+
+
+  .card-text {
+    margin: -50px 0px -50px 20px;
+  }
+
+
+  .card-view-more {
+    width: 100px;
+    height: 80px;
+  }
+
+  .card-view-more p {
+    font-size: 1.2rem;
+  }
+
+}
