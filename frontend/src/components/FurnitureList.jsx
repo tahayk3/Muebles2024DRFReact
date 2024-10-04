@@ -16,8 +16,6 @@ const FurnitureList = () => {
 
   const fetchFurniture = async (url, pageChange = 0) => {
     setLoading(true);
-
-    // Verificar y reemplazar http con https si es necesario
     const secureUrl = url.startsWith("http://")
       ? url.replace("http://", "https://")
       : url;
