@@ -71,11 +71,10 @@ body {
 .txtelegantshadow {
     text-transform: uppercase;
     text-align: center;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     padding: 30px;
     color: #F5F5F5;
     background-color: #2C2C2C; /* Fondo más suave para muebles */
-
     border-radius: 25px;
     transition: all 0.3s ease; /* Animación suave en hover */
 }
@@ -123,7 +122,13 @@ body {
 
 .description-description {
     font-size: 1.5rem;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
+}
+
+.description-description-price {
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    color: #f23005;
 }
 
 .description-body {
@@ -140,7 +145,7 @@ body {
 p {
     margin: 0;
     height: 50px;
-    line-height: 50px;
+    line-height: 20px;
     transition: all 0.5s ease-in-out;
 }
 
@@ -216,10 +221,10 @@ p {
 
     .description {
         padding: 15px;
-        /* Ajusta el padding */
     }
+    
     .description-description {
         font-size: 1.2rem;
-        padding-bottom: 150px;
+        padding-bottom: 30px;
     }
 }

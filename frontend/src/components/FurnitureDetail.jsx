@@ -24,6 +24,7 @@ function FurnitureDetail() {
         );
         setFurniture(response.data);
         setLoading(false);
+        window.scrollTo(0,0);
       } catch (error) {
         console.log("Error al obtener datos de detalle de un mueble");
         setLoading(false);
@@ -90,6 +91,8 @@ function FurnitureDetail() {
           <p className="description-body">
             <FaRuler /> Profundidad: {furniture.depth} CM
           </p>
+          <h2 className="title-description">Precio</h2>
+          <p className="description-description-price">Q {furniture.price}</p>
         </div>
       </div>
 
