@@ -29,7 +29,7 @@ const Model = ({ url, color }) => {
         }
 
         // Si el color es blanco, gris o negro
-        if (color === '#f7f7f7' || color === '#878787' || color ==='#242423') {
+        if (color === "#f7f7f7" || color === "#878787" || color === "#242423") {
           child.material.map = null; // Elimina la textura
         } else {
           // Restaurar la textura original
@@ -57,31 +57,34 @@ const Model = ({ url, color }) => {
       // Reiniciar la transformación
       modelRef.current.position.set(0, 0, 0);
       modelRef.current.scale.set(1, 1, 1); // Reinicia a escala 1 antes de recalcular
-  
+
       const bbox = new THREE.Box3().setFromObject(modelRef.current);
       console.log("Bounding Box:", bbox); // Verifica la caja delimitadora
-  
+
       const size = bbox.getSize(new THREE.Vector3());
-      const height = size.y + size.y * 0.75;  // Altura del modelo
+      const height = size.y + size.y * 0.75; // Altura del modelo
       const windowHeight = window.innerHeight;
-  
+
       if (height > 0) {
         const scale = windowHeight / height; // Escalar basado en la altura de la ventana
         scaleRef.current = scale; // Guardar la escala en referencia
-  
+
         const center = bbox.getCenter(new THREE.Vector3());
         console.log("center", center);
-        
+
         // Escalar el modelo
         modelRef.current.scale.set(scale, scale, scale);
-  
+
         // Ajustar la posición Y para centrar el modelo
-        const canvasCenterY = height * scale / 4; // Altura del modelo escalado dividido entre 2
-        modelRef.current.position.set(-center.x * scale, -canvasCenterY, -center.z * scale); // Centrar el modelo en el canvas
+        const canvasCenterY = (height * scale) / 4; // Altura del modelo escalado dividido entre 2
+        modelRef.current.position.set(
+          -center.x * scale,
+          -canvasCenterY,
+          -center.z * scale
+        ); // Centrar el modelo en el canvas
       }
     }
   }, [isModelReady]);
-  
 
   // Aplicar la escala a la referencia
   useEffect(() => {
@@ -100,8 +103,17 @@ const Model = ({ url, color }) => {
 const ModelViewer = ({ modelUrl }) => {
   const [color, setColor] = useState("#FFFFFF");
 
+  const handleScrollUp = () =>{
+    window.scrollBy({ top: -200, behavior: "smooth" });
+  }
+
+
   const handleColorChange = (newColor) => {
-    setColor(newColor.hex);
+    if(newColor.hex ==='up'){
+      handleScrollUp();
+    }else{
+      setColor(newColor.hex);
+    }
   };
 
   return (
@@ -111,7 +123,7 @@ const ModelViewer = ({ modelUrl }) => {
         height: "100vh",
         borderRadius: "15px",
         background: "#fff",
-        backgroundColor: "rgba(0,0,0, 0.1)",
+        backgroundColor: "rgba(0,0,0, 0.2)",
         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.8)",
         backdropFilter: "blur(0px)",
         WebkitBackdropFilter: "blur(0px)",
@@ -132,10 +144,16 @@ const ModelViewer = ({ modelUrl }) => {
       <div
         style={{
           width: "5%",
-          padding: "10px",
+          padding: "15px", // Más espacio alrededor
           display: "flex",
+          flexDirection: "column", // Alinear elementos verticalmente
           justifyContent: "center",
           alignItems: "center",
+
+          backgroundColor: "rgba(255, 255, 255, 0.3)", // Fondo más claro para el área del selector
+          borderTopRightRadius: "20px", // Suavizar bordes
+          borderBottomRightRadius: "20px",
+          boxShadow: "inset 0px 0px 10px rgba(0, 0, 0, 0.1)", // Efecto de profundidad dentro del selector
         }}
       >
         <ColorPicker color={color} onChange={handleColorChange} />
@@ -148,7 +166,7 @@ const CameraSetup = () => {
   const { camera } = useThree();
 
   useEffect(() => {
-    camera.position.set(1,10,700); // Ajusta la distancia aquí
+    camera.position.set(1, 10, 700); // Ajusta la distancia aquí
     camera.lookAt(0, 0, 0); // Apunta al centro
     camera.updateProjectionMatrix();
   }, [camera]);
