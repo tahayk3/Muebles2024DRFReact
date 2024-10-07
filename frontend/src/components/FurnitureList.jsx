@@ -4,7 +4,7 @@ import "./FurnitureList.css";
 import "./paginacion.css";
 import { GiClick } from "react-icons/gi";
 import { HiCursorClick } from "react-icons/hi";
-import { FaRulerHorizontal, FaRulerVertical, FaRuler } from "react-icons/fa";
+import { FaRulerHorizontal, FaRulerVertical, FaRuler, FaArrowUp } from "react-icons/fa";
 
 const FurnitureList = () => {
   const [furniture, setFurniture] = useState([]);
@@ -12,6 +12,7 @@ const FurnitureList = () => {
   const [previousPage, setPreviousPage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showScrollButton, setShowScrollButton] = useState(false);
   const navigate = useNavigate();
 
   const fetchFurniture = async (url, pageChange = 0) => {
@@ -44,7 +45,27 @@ const FurnitureList = () => {
     fetchFurniture(
       "https://muebles2024drfreactbackend-production.up.railway.app/api/furniture/"
     );
+
+    const handleScroll = () =>{
+      if(window.scrollY > 300){
+        setShowScrollButton(true);
+      }else{
+        setShowScrollButton(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () =>{
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div>
@@ -116,6 +137,16 @@ const FurnitureList = () => {
               </button>
             )}
           </div>
+
+          {/* Boton de volver al inicio */}
+          {showScrollButton && (
+            <button
+            className="scroll-to-top-button"
+            onClick={scrollToTop}
+            >
+              <FaArrowUp/>
+            </button>
+          )}
         </>
       )}
     </div>
