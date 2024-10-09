@@ -1,0 +1,63 @@
+/* Estilos para la navbar */
+.navbar {
+    color: white;
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(0.1px);
+    -webkit-backdrop-filter: blur(0.1px);
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+/* Ajustar el espaciado superior del contenido principal para no ocultarlo detrás de la navbar */
+body {
+    margin-top: calc(50px + 20px);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 0 20px;
+    font-size: 20px;
+    padding: 15px;
+}
+
+.login-navbar{
+    background-color: #F23005;
+    border-radius: 10px;
+}
+
+.navbar img {
+    height: auto;
+    max-height: 75px;
+    width: auto;
+    border-radius: 10px;
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 5px; 
+        justify-content: space-between;
+    }
+
+    .navbar a {
+        font-size: 16px; 
+        padding: 0 10px;
+    }
+
+    .navbar img {
+        max-height: 50px
+    }
+
+    body {
+        margin-top: calc(40px + 10px);
+    }
+}
