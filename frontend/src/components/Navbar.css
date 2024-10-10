@@ -18,7 +18,7 @@
 
 /* Ajustar el espaciado superior del contenido principal para no ocultarlo detrás de la navbar */
 body {
-    margin-top: calc(37px + 20px);
+    margin-top: calc(100px);
 }
 
 .navbar a {
@@ -30,13 +30,13 @@ body {
 }
 
 .login-navbar{
-    background-color: #F23005;
+    background-color: #0a50e7;
     border-radius: 10px;
 }
 
 .navbar img {
     height: auto;
-    max-height: 65px;
+    max-height: 110px;
     width: auto;
     border-radius: 10px;
 }

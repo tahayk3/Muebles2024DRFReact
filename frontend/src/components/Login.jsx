@@ -31,7 +31,7 @@ function Login() {
       <div className="login-container">
         <div className="login-image">
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/mueblesxela-d948d.appspot.com/o/uploads%2F452200498_1958498787939923_3194501574762496239_n%20(1).jpg?alt=media&token=3bcf094a-b643-4da1-bb7f-fe8c81a39c96"
+            src="./logo512.png"
             alt="Login visual"
           />
         </div>
