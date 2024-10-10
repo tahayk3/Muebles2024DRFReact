@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.9);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(0.1px);
     -webkit-backdrop-filter: blur(0.1px);
@@ -18,7 +18,7 @@
 
 /* Ajustar el espaciado superior del contenido principal para no ocultarlo detrás de la navbar */
 body {
-    margin-top: calc(50px + 20px);
+    margin-top: calc(37px + 20px);
 }
 
 .navbar a {
@@ -26,7 +26,7 @@ body {
     text-decoration: none;
     padding: 0 20px;
     font-size: 20px;
-    padding: 15px;
+    padding: 10px;
 }
 
 .login-navbar{
@@ -36,7 +36,7 @@ body {
 
 .navbar img {
     height: auto;
-    max-height: 75px;
+    max-height: 65px;
     width: auto;
     border-radius: 10px;
 }
