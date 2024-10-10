@@ -78,12 +78,13 @@ marquee{
 
 .card-view-more {
   width: 150px;
-  height: 100px;
+  height: 50px;
   background-color: #c50f0cea;
   margin-left: 50%;
   border-radius: 15px;
-  margin-top: 10px;
+  margin-top: 25px;
   margin-bottom: 20px;
+  padding-top: 15px;
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   animation: vibrate-2 1s linear infinite both;
@@ -92,6 +93,7 @@ marquee{
   align-items: center;
   text-align: center; /* Asegura que el texto se mantenga alineado en el centro */
   overflow: hidden; /* Evita que el contenido se desborde */
+
 }
 
 @keyframes vibrate-2 {
