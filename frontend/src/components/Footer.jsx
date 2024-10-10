@@ -1,8 +1,11 @@
 import React from "react";
+import './Footer.css';
 
 function Footer(){
     return (
-        <h1>Footer</h1>
+        <footer className="footer">
+            <p>© 2024 Mi Tienda de Muebles. Todos los derechos reservados.</p>
+        </footer>
     );
 }
 

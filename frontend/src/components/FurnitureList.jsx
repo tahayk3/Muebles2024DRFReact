@@ -95,7 +95,6 @@ const FurnitureList = () => {
                     <img src={item.images[0].image_url} alt={item.name} />
                   </div>
                   <div className="card-text">
-                    <p className="card-meal-type">Mueble nuevo y armado</p>
                     <h3 className="card-title">{item.name}</h3>
                     <p className="card-body">
                       <FaRulerHorizontal /> Ancho: {item.width} CM
