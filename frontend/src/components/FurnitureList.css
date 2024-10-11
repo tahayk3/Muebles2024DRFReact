@@ -144,11 +144,11 @@ marquee{
 
 @media (max-width: 480px) {
   .card {
-    width: 95%;
+    width: 100%;
   }
 
   .card-text {
-    margin: -50px 0px -50px 20px;
+    margin: -50px 0px -50px 0px;
   }
 
   .card-image>img {

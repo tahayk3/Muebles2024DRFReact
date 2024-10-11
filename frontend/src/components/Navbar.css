@@ -1,4 +1,5 @@
 /* Estilos para la navbar */
+
 .navbar {
     color: white;
     padding: 5px;
@@ -7,18 +8,11 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.9);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(0.1px);
-    -webkit-backdrop-filter: blur(0.1px);
+    background-color: black;
+
     display: flex;
     justify-content:space-around;
     align-items: center;
-}
-
-/* Ajustar el espaciado superior del contenido principal para no ocultarlo detrás de la navbar */
-body {
-    margin-top: calc(100px);
 }
 
 .navbar a {
@@ -43,21 +37,15 @@ body {
 
 /* Media Queries para dispositivos móviles */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 5px; 
-        justify-content: space-between;
+    .navbar img {
+        max-height: 60px
     }
 
     .navbar a {
-        font-size: 16px; 
+        color: white;
+        text-decoration: none;
         padding: 0 10px;
-    }
-
-    .navbar img {
-        max-height: 50px
-    }
-
-    body {
-        margin-top: calc(40px + 10px);
+        font-size: 8px;
+        padding: 5px;
     }
 }

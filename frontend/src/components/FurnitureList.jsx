@@ -39,6 +39,12 @@ const FurnitureList = () => {
       setLoading(false);
       setCurrentPage(currentPage + pageChange);
     }
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
   };
 
   useEffect(() => {
