@@ -1,0 +1,269 @@
+.container-delivery {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #ffffff09;
+    margin-top: 100px;
+    margin-bottom: 15px;
+}
+
+.text-container {
+    color: white;
+}
+
+.text-container h2 {
+    font-size: 30px;
+}
+
+.text-container p{
+    font-size: 20px;
+}
+
+.loop-wrapper {
+    position: relative;
+    width: 600px;
+    height: 250px;
+    overflow: hidden;
+    border-bottom: 3px solid #fff;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.mountain {
+    position: absolute;
+    right: -900px;
+    bottom: -20px;
+    width: 2px;
+    height: 2px;
+    box-shadow:
+        0 0 0 50px #de420e,
+        60px 50px 0 70px #4DB6AC,
+        90px 90px 0 50px hsl(35, 94%, 49%),
+        250px 250px 0 50px #4DB6AC,
+        290px 320px 0 50px #4DB6AC,
+        320px 400px 0 50px #623f0b;
+    transform: rotate(130deg);
+    animation: mtn 20s linear infinite;
+}
+
+.hill {
+    position: absolute;
+    right: -900px;
+    bottom: -50px;
+    width: 400px;
+    border-radius: 50%;
+    height: 20px;
+    box-shadow:
+        0 0 0 50px #4DB6AC,
+        -20px 0 0 20px #4DB6AC,
+        -90px 0 0 50px #4DB6AC,
+        250px 0 0 50px #4DB6AC,
+        290px 0 0 50px #4DB6AC,
+        620px 0 0 50px #4DB6AC;
+    animation: hill 4s 2s linear infinite;
+}
+
+.tree,
+.tree:nth-child(2),
+.tree:nth-child(3) {
+    position: absolute;
+    height: 100px;
+    width: 35px;
+    bottom: 0;
+    background: url("../tree.svg") no-repeat;
+
+}
+
+.rock {
+    margin-top: -17%;
+    height: 2%;
+    width: 2%;
+    bottom: -2px;
+    border-radius: 20px;
+    position: absolute;
+    background: #ddd;
+}
+
+.truck,
+.wheels {
+    transition: all ease;
+    width: 85px;
+    margin-right: -60px;
+    bottom: 0px;
+    right: 50%;
+    position: absolute;
+    background: #eee;
+}
+
+.truck {
+    background: url("../truck.svg") no-repeat;
+    background-size: contain;
+    height: 60px;
+}
+
+.truck:before {
+    content: " ";
+    position: absolute;
+    width: 25px;
+    box-shadow:
+        -30px 28px 0 1.5px #fff,
+        -35px 18px 0 1.5px #fff;
+}
+
+.wheels {
+    background: url("../wheels.svg") no-repeat;
+    height: 15px;
+    margin-bottom: 0;
+}
+
+.tree {
+    animation: tree 3s 0.000s linear infinite;
+}
+
+.tree:nth-child(2) {
+    animation: tree2 2s 0.150s linear infinite;
+}
+
+.tree:nth-child(3) {
+    animation: tree3 8s 0.050s linear infinite;
+}
+
+.rock {
+    animation: rock 4s -0.530s linear infinite;
+}
+
+.truck {
+    animation: truck 4s 0.080s ease infinite;
+}
+
+.wheels {
+    animation: truck 4s 0.001s ease infinite;
+}
+
+.truck:before {
+    animation: wind 1.5s 0.000s ease infinite;
+}
+
+.sun {
+    position: absolute;
+    top: 30px; /* Posición vertical */
+    right: 50px; /* Mueve el sol hacia la derecha */
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #FFD700, #FFA500);
+    border-radius: 50%;
+    box-shadow: 0px 0px 35px rgb(255, 166, 0); /* Brillo del sol */
+    animation: sunrise 12s linear infinite; /* Ajusta la animación si lo necesitas */
+}
+
+@keyframes sunrise {
+    0% {
+        top: 300px; /* Empieza desde abajo */
+    }
+    25% {
+        top: 30px; /* Sube hasta la parte superior */
+    }
+    50% {
+        top: 30px; /* Sube hasta la parte superior */
+    }
+    75% {
+        top: 30px; /* Sube hasta la parte superior */
+    }
+    100% {
+        top: 300px; /* Baja otra vez */
+    }
+}
+
+@keyframes tree {
+    0% {
+        transform: translate(1350px);
+    }
+
+    50% {}
+
+    100% {
+        transform: translate(-50px);
+    }
+}
+
+@keyframes tree2 {
+    0% {
+        transform: translate(650px);
+    }
+
+    50% {}
+
+    100% {
+        transform: translate(-50px);
+    }
+}
+
+@keyframes tree3 {
+    0% {
+        transform: translate(2750px);
+    }
+
+    50% {}
+
+    100% {
+        transform: translate(-50px);
+    }
+}
+
+@keyframes rock {
+    0% {
+        right: -200px;
+    }
+
+    100% {
+        right: 2000px;
+    }
+}
+
+@keyframes truck {
+    0% {}
+
+    6% {
+        transform: translateY(0px);
+    }
+
+    7% {
+        transform: translateY(-6px);
+    }
+
+    9% {
+        transform: translateY(0px);
+    }
+
+    10% {
+        transform: translateY(-1px);
+    }
+
+    11% {
+        transform: translateY(0px);
+    }
+
+    100% {}
+}
+
+@keyframes wind {
+    0% {}
+
+    50% {
+        transform: translateY(3px)
+    }
+
+    100% {}
+}
+
+@keyframes mtn {
+    100% {
+        transform: translateX(-2000px) rotate(130deg);
+    }
+}
+
+@keyframes hill {
+    100% {
+        transform: translateX(-2000px);
+    }
+}

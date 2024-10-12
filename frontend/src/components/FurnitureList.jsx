@@ -5,6 +5,7 @@ import "./paginacion.css";
 import { GiClick } from "react-icons/gi";
 import { HiCursorClick } from "react-icons/hi";
 import { FaRulerHorizontal, FaRulerVertical, FaRuler, FaArrowUp } from "react-icons/fa";
+import Delivery from "./Delivery";
 
 const FurnitureList = () => {
   const [furniture, setFurniture] = useState([]);
@@ -82,6 +83,7 @@ const FurnitureList = () => {
         </div>
       ) : (
         <>
+        <Delivery/>
           <marquee direction="left" scrollamount="13">
             <h2>
               <GiClick /> Clic en la imagen para más información{" "}

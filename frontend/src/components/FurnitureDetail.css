@@ -67,6 +67,11 @@ body {
     font-family: 'Fira Code', monospace;
 }
 
+.container-detail{
+    padding-top: 70px;
+}
+
+
 /*titulos*/
 .txtelegantshadow {
     text-transform: uppercase;
