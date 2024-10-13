@@ -1,0 +1,122 @@
+#app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper {
+  width: 100px;
+  height: 250px;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    outline: none;
+  }
+  
+  .slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+.swiper-slide:nth-child(1n) {
+    background-color: #282c34;
+}
+
+.swiper-slide:nth-child(2n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(3n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(4n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(5n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(6n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(7n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(8n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(9n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(10n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(11n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(12n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(13n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(14n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(15n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(16n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(17n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(18n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(19n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(20n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(21n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(22n) {
+  background-color: #282c34;
+}
+
+.swiper-slide:nth-child(2n) {
+  background-color: #282c34;
+}
