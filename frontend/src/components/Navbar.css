@@ -1,51 +1,76 @@
-/* Estilos para la navbar */
-
+/* Estilos para el menú lateral */
 .navbar {
     color: white;
-    padding: 5px;
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: -330px; /* Escondido inicialmente */
+    width: 330px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.943);
     z-index: 1000;
-    background-color: black;
-
     display: flex;
-    justify-content:space-around;
+    flex-direction: column;
+    justify-content: start;
     align-items: center;
+    padding-top: 50px;
+    transition: left 0.3s ease;
+}
+
+/* Mostrar menú cuando está abierto */
+.navbar.open {
+    left: 0;
+}
+
+.navbar img {
+    height: auto;
+    max-height: 200px;
+    width: auto;
+    max-width: 330px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
-    padding: 0 20px;
-    font-size: 20px;
     padding: 10px;
+    font-size: 20px;
+    width: 90%;
+    text-align: center;
 }
 
-.login-navbar{
+/* Botón para abrir el menú */
+.menu-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1100;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Estilo para el botón de inicio de sesión */
+.login-navbar {
     background-color: #004aad;
     border-radius: 10px;
-}
-
-.navbar img {
-    height: auto;
-    max-height: 110px;
-    width: auto;
-    border-radius: 10px;
+    width: 10%;
+    text-align: center;
 }
 
 /* Media Queries para dispositivos móviles */
 @media (max-width: 768px) {
-    .navbar img {
-        max-height: 60px
+    .navbar a {
+        font-size: 16px;
     }
 
-    .navbar a {
-        color: white;
-        text-decoration: none;
-        padding: 0 10px;
-        font-size: 8px;
-        padding: 5px;
+    .navbar img {
+        max-height: 60px;
+    }
+
+    .menu-toggle {
+        font-size: 20px;
     }
 }
